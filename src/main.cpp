@@ -5,10 +5,28 @@
  */
 
 #include <iostream>
-#include <SDL2/SDL.h>
+#include "Screen.h"
+
+#define PROJECT_TITLE "Project Explore"
+#define VERSION "0.01a"
+#define WINDOW_WIDTH 800
+#define WINDOW_HEIGHT 600
+
+/* Declare Functions */
+void shutdown();
+
+/* Globals */
+Screen * screen;
 
 int main(int argc, char const *argv[])
 {
-    std::cout << "Hello World" << std::endl;
+    std::cout << "Starting " << PROJECT_TITLE << " Ver. " << VERSION << std::endl;
+    screen = new Screen(WINDOW_WIDTH, WINDOW_HEIGHT);
+    shutdown();
     return 0;
+}
+
+void shutdown()
+{
+    delete screen;
 }
