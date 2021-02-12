@@ -17,6 +17,7 @@ private:
     int _width, _height;
     char* _gameTitle;
     SDL_Window * _mainWindow;
+    SDL_Renderer * _mainRenderer;
     bool _initialize();
 public:
     Screen(int aWidth, int aHeight, char* title);
@@ -64,6 +65,14 @@ bool Screen::_initialize()
     if (!_mainWindow)
     {
         std::cout << "SCREEN_H|_initialize: SDL_CreateWindow failed" << std::endl;
+        return false;
+    }
+
+    _mainRenderer = SDL_CreateRenderer(_mainWindow, -1, SDL_RENDERER_ACCELERATED);
+
+    if(!_mainRenderer)
+    {
+        std::cout << "SCREEN_H|_initialize: SDL_CreateRenderer failed" << std::endl;
         return false;
     }
 
