@@ -33,4 +33,4 @@
 *.run
 
 # VSCODE 
-vscode/
+.vscode/

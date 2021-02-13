@@ -6,10 +6,11 @@
 
 #include <iostream>
 #include "Screen.h"
+#include "InputManager.h"
 
 #define VERSION "0.01a"
-#define WINDOW_WIDTH 800
-#define WINDOW_HEIGHT 600
+#define WINDOW_WIDTH 1920
+#define WINDOW_HEIGHT 1080
 
 /* Declare Functions */
 void initialize();
@@ -17,12 +18,23 @@ void shutdown();
 
 /* Globals */
 Screen * screen;
+InputManager* inputManager;
 
 char* program_title = "Project Explore";
 
 int main(int argc, char const *argv[])
 {
     initialize();
+
+    /* Game Loop */
+    bool isRunning = true;
+    
+
+    while(isRunning)
+    {
+        isRunning = inputManager->eventHandler();
+    }
+
     shutdown();
     return 0;
 }
@@ -36,7 +48,6 @@ void initialize()
 void shutdown()
 {
     std::cout << "Starting Shutdown..." << std::endl;
-    screen = new Screen(WINDOW_WIDTH, WINDOW_HEIGHT, program_title);
     delete screen;
 
     std::cout << "Shutdown Completed" << std::endl;
