@@ -2,13 +2,14 @@
  * Project Explore
  * Inputmanager Class
  * File:            InputManager.h
- * Date:            Feb 9 2021
+ * Date:            Feb 12 2021
  */
 
 #ifndef INPUTMANAGER_H
 #define INPUTMANAGER_H
 
 #include <SDL2/SDL.h>
+#include <iostream>
 
 class InputManager
 {
@@ -18,27 +19,5 @@ public:
     ~InputManager();
     bool eventHandler();
 };
-
-InputManager::InputManager()
-{
-}
-
-InputManager::~InputManager()
-{
-}
-
-bool InputManager::eventHandler()
-{
-    SDL_Event e;
-    while(SDL_PollEvent(&e))
-    {
-        if(e.type == SDL_QUIT)
-        {
-            return false;
-        }
-    }
-
-    return true;
-}
 
 #endif
