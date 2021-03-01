@@ -10,6 +10,7 @@
 
 #include <iostream>
 #include <SDL2/SDL.h>
+#include "Tile.h"
 
 class Screen
 {
@@ -24,7 +25,7 @@ public:
     ~Screen();
     void clear();
     void refresh();
-    void drawTile(int x, int y, int tileSize);
+    void drawTile(int x, int y, int tileSize, TileColor tileColor);
     bool fullyInitialized = true;
 };
 

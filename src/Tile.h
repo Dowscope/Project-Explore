@@ -10,6 +10,11 @@
 
 #include <iostream>
 
+struct TileColor
+{
+    int r, g, b, a;
+};
+
 class Tile
 {
 protected:
@@ -17,6 +22,7 @@ public:
     Tile(int x, int y);
     ~Tile();
     int x, y;
+    TileColor tileColor;
 };
 
 #endif

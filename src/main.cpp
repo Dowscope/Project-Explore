@@ -5,6 +5,8 @@
  */
 
 #include <iostream>
+#include <stdlib.h>
+#include <time.h>
 #include "Screen.h"
 #include "InputManager.h"
 #include "World.h"
@@ -13,7 +15,7 @@
 #define WINDOW_WIDTH 1920
 #define WINDOW_HEIGHT 1080
 #define FPS 60
-#define TILESIZE 32
+#define TILESIZE 128
 
 /* Declare Functions */
 void initialize();
@@ -29,6 +31,7 @@ char* program_title = "Project Explore";
 
 int main(int argc, char const *argv[])
 {
+    srand(0);
     initialize();
 
     /* Game Loop */
@@ -72,7 +75,7 @@ void render()
         for (int x = 0; x < c->CHUNKSIZE; x++)
         {   
             Tile* t = c->getTileAt(x, y);
-            screen->drawTile(t->x*TILESIZE,t->y*TILESIZE,TILESIZE);
+            screen->drawTile(t->x*TILESIZE,t->y*TILESIZE,TILESIZE, t->tileColor);
         }
         
     }
