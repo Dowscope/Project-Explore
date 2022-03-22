@@ -19,16 +19,23 @@ InputManager::~InputManager()
     std::cout << "OK" << std::endl;
 }
 
-bool InputManager::eventHandler()
+int InputManager::eventHandler(Player* player)
 {
     SDL_Event e;
     while(SDL_PollEvent(&e))
     {
         if(e.type == SDL_QUIT)
         {
-            return false;
+            return -1;
+        }
+        else if (e.type == SDL_KEYDOWN)
+        {
+            if (e.key.keysym.sym == SDLK_s)
+            {
+                player->y += 1;
+            }
         }
     }
 
-    return true;
+    return 0;
 }

@@ -8,12 +8,7 @@
 #ifndef TILE_H
 #define TILE_H
 
-#include <iostream>
-
-struct TileColor
-{
-    int r, g, b, a;
-};
+#include "includes.h"
 
 class Tile
 {

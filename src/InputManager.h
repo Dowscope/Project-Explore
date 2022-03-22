@@ -8,8 +8,8 @@
 #ifndef INPUTMANAGER_H
 #define INPUTMANAGER_H
 
-#include <SDL2/SDL.h>
-#include <iostream>
+#include "includes.h"
+#include "Player.h"
 
 class InputManager
 {
@@ -17,7 +17,7 @@ private:
 public:
     InputManager();
     ~InputManager();
-    bool eventHandler();
+    int eventHandler(Player* player);
 };
 
 #endif

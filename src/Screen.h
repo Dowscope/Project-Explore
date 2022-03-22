@@ -8,9 +8,7 @@
 #ifndef SCREEN_H
 #define SCREEN_H
 
-#include <iostream>
-#include <SDL2/SDL.h>
-#include "Tile.h"
+#include "includes.h"
 
 class Screen
 {
@@ -19,6 +17,9 @@ private:
     char* _gameTitle;
     SDL_Window * _mainWindow;
     SDL_Renderer * _mainRenderer;
+public:
+    bool fullyInitialized = true;
+private:
     bool _initialize();
 public:
     Screen(int aWidth, int aHeight, char* title);
@@ -26,7 +27,7 @@ public:
     void clear();
     void refresh();
     void drawTile(int x, int y, int tileSize, TileColor tileColor);
-    bool fullyInitialized = true;
+    void drawPlayer(int x, int y, int size);
 };
 
 #endif

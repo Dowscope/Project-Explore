@@ -25,9 +25,10 @@ Chunk* World::GetChunkAt(int x, int y)
     for (int i = 0; i < _chunks.size(); i++)
     {
         Chunk c = *_chunks[i];
-        if(std::floor(x / c.CHUNKSIZE) == c.x)
+        if(std::floor(x / c.CHUNKSIZE) == c.x && std::floor(y / c.CHUNKSIZE) == c.y)
         {
             return _chunks[i];
         }
     }
+    return nullptr;
 }

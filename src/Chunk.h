@@ -8,7 +8,7 @@
 #ifndef CHUNK_H
 #define CHUNK_H
 
-#include <vector>
+#include "includes.h"
 #include "Tile.h"
 
 class Chunk
@@ -16,8 +16,9 @@ class Chunk
 private:
     std::vector<Tile*> _tiles;
 public:
-    int x, y;
     const int CHUNKSIZE = 16;
+    int x, y;
+    bool isCurrent = false;
     Chunk(int x, int y);
     ~Chunk();
     Tile* getTileAt(int x, int y);

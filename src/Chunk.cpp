@@ -35,4 +35,5 @@ Tile* Chunk::getTileAt(int x, int y)
             return _tiles[i];
         }
     }
+    return nullptr;
 }

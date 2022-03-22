@@ -78,3 +78,10 @@ void Screen::drawTile(int x, int y, int tileSize, TileColor tileColor)
     SDL_SetRenderDrawColor(_mainRenderer, tileColor.r, tileColor.g, tileColor.b, tileColor.a);
     SDL_RenderFillRect(_mainRenderer, &r);
 }
+
+void Screen::drawPlayer(int x, int y, int size)
+{
+    SDL_Rect r = {x, y, size, size};
+    SDL_SetRenderDrawColor(_mainRenderer, 0, 0, 0, 255);
+    SDL_RenderFillRect(_mainRenderer, &r);
+}

@@ -4,28 +4,31 @@
  * Date Started: Feb 9th 2021
  */
 
-#include <iostream>
 #include <stdlib.h>
 #include <time.h>
+#include "includes.h"
 #include "Screen.h"
-#include "InputManager.h"
 #include "World.h"
+#include "Player.h"
+#include "InputManager.h"
 
 #define VERSION "0.01a"
-#define WINDOW_WIDTH 1920
-#define WINDOW_HEIGHT 1080
+#define WINDOW_WIDTH 800
+#define WINDOW_HEIGHT 600
 #define FPS 60
-#define TILESIZE 128
+#define TILESIZE 32
 
 /* Declare Functions */
 void initialize();
 void shutdown();
 void render();
+void renderGround();
 
 /* Globals */
 Screen * screen;
 InputManager* inputManager;
 World* world;
+Player* player;
 
 char* program_title = "Project Explore";
 
@@ -40,7 +43,8 @@ int main(int argc, char const *argv[])
 
     while(isRunning)
     {
-        isRunning = inputManager->eventHandler();
+        int event = inputManager->eventHandler(player);
+        if (event == -1) isRunning = false;
         screen->clear();
         render();
         screen->refresh();
@@ -54,20 +58,28 @@ void initialize()
 {
     std::cout << "Initializing " << program_title << " Ver. " << VERSION << std::endl;
     screen = new Screen(WINDOW_WIDTH, WINDOW_HEIGHT, program_title);
-    inputManager = new InputManager();
     world = new World();
+    player = new Player(0,0);
+    inputManager = new InputManager();
 }
 
 void shutdown()
 {
     std::cout << "Starting Shutdown..." << std::endl;
-    delete screen;
     delete inputManager;
+    delete player;
     delete world;
+    delete screen;
     std::cout << "Shutdown Completed" << std::endl;
 }
 
 void render()
+{
+    renderGround();
+    screen->drawPlayer(player->x, player->y, 16);
+}
+
+void renderGround()
 {
     Chunk* c = world->GetChunkAt(0,0);
     for (int y = 0; y < c->CHUNKSIZE; y++)
